@@ -11,10 +11,7 @@ namespace sweProject.Controllers
 {
     public class UserController : ApiController
     {
-    
-      [HttpGet]
-        [Route("get/")]
-        public IHttpActionResult getAllUsers()
+<<<<<<
         {
             List<User> u = Models.User.getAllUsers();
                     return Ok(Models.User.getAllUsers());
