@@ -11,19 +11,11 @@ namespace sweProject.Controllers
 {
     public class UserController : ApiController
     {
-       User globalUser = new User();
-
-        public void getUser()
+<<<<<<
         {
-
-        }
-       
-        [HttpPost]
-        [Route("reg/")]
-        public IHttpActionResult addUser(User u)
-        {
-            globalUser = u;
-            return Ok(u.register());
+            List<User> u = Models.User.getAllUsers();
+                    return Ok(Models.User.getAllUsers());
+           
         }
     }
 }
