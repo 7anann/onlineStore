@@ -16,7 +16,8 @@ namespace sweProject.Controllers
 
         public void getUser()
         {
-
+            globalUser = u;
+            return Ok(u.register());
         }
        
         [HttpPost]
