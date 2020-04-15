@@ -14,15 +14,14 @@ namespace sweProject.Controllers
         
        User globalUser = new User();
 
-        public void getUser()
-        {
-            globalUser = u;
-            return Ok(u.register());
-        }
        
         [HttpPost]
         [Route("reg/")]
         public IHttpActionResult addUser(User u)
+        {
+           globalUser = u;
+           return Ok(u.register());
+        }
 
     
       [HttpGet]
