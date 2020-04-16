@@ -21,6 +21,22 @@ namespace sweProject.Models
             return true;
         }
         
+        
+        public string logIn(User u)
+        {
+          
+            List<User> user = Adminstrator.getAllUsers();
+            for (int i=0; i< user.Count;i++)
+            {
+               if (user[i].username == username && user[i].password == password)
+                {
+                    return "Logged in successfully.";
+                }
+            }
+            return "Wrong username or password.";
+            
+        }
+        
         public static List<User> getAllUsers()
         {
             usersDatabaseDataContext db = new usersDatabaseDataContext();
