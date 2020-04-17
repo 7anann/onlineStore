@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,19 @@ namespace sweProject.Controllers
 {
     public class UserController : ApiController
     {
-    
-     [HttpGet]
+        
+       User globalUser = new User();
+
+       
+        [HttpPost]
+        [Route("reg/")]
+        public IHttpActionResult addUser(User u)
+        {
+           globalUser = u;
+           return Ok(u.register());
+        }
+
+    [HttpGet]
         [Route("get/")]
         public IHttpActionResult getAllUsers(User use) 
         {
@@ -34,4 +46,5 @@ namespace sweProject.Controllers
         }
     }
 }
+
 
