@@ -44,6 +44,13 @@ namespace sweProject.Controllers
 
             return Ok("You must be an authorized user to use this functionality.");
         }
+        
+        [HttpPost]
+        [Route("login/")]
+        public IHttpActionResult logIn(User u)
+        {         
+            return Ok(u.logIn(u));
+        }
     }
 }
 
