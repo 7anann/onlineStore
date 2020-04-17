@@ -32,6 +32,13 @@ namespace sweProject.Controllers
                     return Ok(Models.User.getAllUsers());
            
         }
+        
+        [HttpPost]
+        [Route("login/")]
+        public IHttpActionResult logIn(User u)
+        {         
+            return Ok(u.logIn(u));
+        }
     }
 }
 
