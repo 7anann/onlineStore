@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +9,28 @@ namespace sweProject.Models
     public class User
     {
         public string username, password, email;
-        public bool register()
+        public string register()
         {
             usersDatabaseDataContext db = new usersDatabaseDataContext();
             storeTable obj = new storeTable();
             obj.username = this.username;
             obj.password = this.password;
             obj.email = this.email;
+            obj.type = this.type;
+
+            List<User> loggedusers = Adminstrator.getAllUsers();
+            for (int i = 0; i < loggedusers.Count; i++)
+            {
+                if (loggedusers[i].email == email)
+                {
+                    return "Email already exists.";
+                }
+            }
+
             db.storeTables.InsertOnSubmit(obj);
             db.SubmitChanges();
-            return true;
+            return "Registeration completed.";
+           
         }
         
         public string logIn(User u)
@@ -38,3 +50,4 @@ namespace sweProject.Models
         
     }
 }
+
