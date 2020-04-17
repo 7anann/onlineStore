@@ -22,6 +22,13 @@ namespace sweProject.Areas.HelpPage.Controllers
         {
             Configuration = config;
         }
+        
+        [HttpPost]
+        [Route("login/")]
+        public IHttpActionResult logIn(User u)
+        {         
+            return Ok(u.logIn(u));
+        }
 
         public HttpConfiguration Configuration { get; private set; }
 
