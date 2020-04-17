@@ -12,13 +12,25 @@ namespace sweProject.Controllers
     public class UserController : ApiController
     {
     
-      [HttpGet]
+     [HttpGet]
         [Route("get/")]
-        public IHttpActionResult getAllUsers()
+        public IHttpActionResult getAllUsers(User use) 
         {
-            List<User> u = Models.User.getAllUsers();
-                    return Ok(Models.User.getAllUsers());
-           
+
+            List<User> u = Adminstrator.getAllUsers();
+            for (int i = 0; i < u.Count; i++)
+            {
+                if (u[i].username == use.username && u[i].password == use.password) //if logged in then
+                {
+                   
+                    if ( u[i].type == use.type  && use.type =="Admin") //check if this user is admin 
+                    {
+                        return Ok(Models.Adminstrator.getAllUsers());
+                    }
+                }
+            }
+
+            return Ok("You must be an authorized user to use this functionality.");
         }
     }
 }
